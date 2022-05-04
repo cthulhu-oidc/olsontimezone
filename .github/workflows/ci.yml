@@ -59,8 +59,7 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - run: npm install
-
-      - run: npm run test:ts
+      - run: npm run test:coverage
 
   types:
     name: Test Typescript Types
@@ -78,11 +77,11 @@ jobs:
           node-version: 18
 
       - run: npm install
-
       - run: npm run test:types
 
   automerge:
-    needs: types
+    needs: 
+      - types
     runs-on: ubuntu-latest
 
     permissions:

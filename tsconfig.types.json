@@ -1,15 +1,11 @@
 {
 	"display": "Typings",
+	"extends": "./tsconfig.json",
 	"compilerOptions": {
-		"sourceMap": true,
-		"noImplicitAny": false,
 		"declaration": true,
-		"module": "commonjs",
-    "target": "es2020",
 		"emitDeclarationOnly": true,
 		"moduleResolution": "node",
-		"rootDir": "src",
-		"experimentalDecorators": true,
+		"sourceMap": false,
 		"resolveJsonModule": false,
 		// Explicitly set types settings so typescript doesn't auto-discover types.
 		// If all types are discovered then all types need to be included as deps
@@ -19,8 +15,7 @@
 		],
 		"skipLibCheck": true
 	},
-	"exclude": [
-		"node_modules",
-		"build"
+	"include": [
+		"src"
 	]
 }
