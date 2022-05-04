@@ -3,7 +3,9 @@
   "ignorePatterns": [
     "node_modules",
     "dist",
-    "coverage"
+    "coverage",
+    "build",
+    "bin"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
