@@ -34,7 +34,7 @@ jobs:
       - run: npm install
 
       - name: Lint TS-Files
-        run: npm run lint:ts
+        run: npm run lint
 
   logic:
     name: Test Logic on Node ${{ matrix.node }}
