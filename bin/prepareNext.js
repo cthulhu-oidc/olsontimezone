@@ -1,6 +1,6 @@
 const fs = require('fs');
 const assert = require('assert');
-const { exec, execSync } = require('child_process');
+const { execSync } = require('child_process');
 
 const tag = 'next';
 const packageJsonFilePath = './package.json';
@@ -15,14 +15,22 @@ packageJsonValue.version = `${majorMinor}.${prereleasePatch}`;
 fs.writeFileSync(packageJsonFilePath, JSON.stringify(packageJsonValue, /*replacer:*/ undefined, /*space:*/ 2));
 
 function getPrereleasePatch(tag, plainPatch) {
-  const timeStr = Date.now();
+  // We're going to append a representation of the current time at the end of the current version.
+  // String.prototype.toISOString() returns a 24-character string formatted as 'YYYY-MM-DDTHH:mm:ss.sssZ',
+  // but we'd prefer to just remove separators and limit ourselves to YYYYMMDD.
+  // UTC time will always be implicit here.
+  const now = new Date();
+  const timeStr = now.toISOString().replace(/:|T|\.|-/g, "").slice(0, 8);
   const shortHash = getShortGitCommitHash();
 
   return `${plainPatch}-${tag}.${timeStr}.${shortHash}`;
 }
 
 function getShortGitCommitHash() {
-  return execSync('git rev-parse --short HEAD').toString();
+  return (
+    process.env.GITHUB_SHA && process.env.GITHUB_SHA.slice(0, -8) ||
+    execSync('git rev-parse --short HEAD').toString().trim()
+  );
 }
 
 function parsePackageJsonVersion(versionString) {
