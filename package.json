@@ -31,7 +31,7 @@
 		"eslint-plugin-security": "1.5.0",
 		"eslint-plugin-security-node": "1.1.1",
 		"eslint-plugin-sonarjs": "0.13.0",
-		"mocha": "^9.2.2",
+		"mocha": "^10.0.0",
 		"nyc": "^15.1.0",
 		"rimraf": "3.0.2",
 		"tsd": "^0.20.0",
