@@ -75,7 +75,7 @@ jobs:
       - run: npm run test:types
 
   automerge:
-    needs: build
+    needs: types
     runs-on: ubuntu-latest
 
     permissions:
