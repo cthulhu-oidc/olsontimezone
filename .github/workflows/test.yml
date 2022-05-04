@@ -1,0 +1,74 @@
+name: Test
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/test.yml'
+      - 'package.json'
+      - 'src'
+      - 'spec'
+  push:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/test.yml'
+      - 'package.json'
+      - 'src'
+      - 'spec'
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint TS-Files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v3.0.2
+
+      - name: Setup node
+        uses: actions/setup-node@56337c425554a6be30cdef71bf441f15be286854 # v3.1.1
+        with:
+          node-version: 18
+
+      - run: npm install
+
+      - name: Lint TS-Files
+        run: npm run lint:ts
+
+  logic:
+    name: Test Logic on Node ${{ matrix.node }}
+    needs:
+      - lint
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [14, 16, 18]
+    steps:
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v3.0.2
+
+      - name: Setup node
+        uses: actions/setup-node@56337c425554a6be30cdef71bf441f15be286854 # v3.1.1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - run: npm install
+
+      - run: npm test:ts
+
+  types:
+    name: Test Typescript Types
+    needs:
+      - logic
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v3.0.2
+
+      - name: Setup node
+        uses: actions/setup-node@56337c425554a6be30cdef71bf441f15be286854 # v3.1.1
+        with:
+          node-version: 18
+
+      - run: npm install
+
+      - run: npm run test:types
