@@ -28,7 +28,7 @@ function getPrereleasePatch(tag, plainPatch) {
 
 function getShortGitCommitHash() {
   return (
-    process.env.GITHUB_SHA && process.env.GITHUB_SHA.slice(0, -8) ||
+    process.env.GITHUB_SHA && process.env.GITHUB_SHA.slice(-8) ||
     execSync('git rev-parse --short HEAD').toString().trim()
   );
 }
