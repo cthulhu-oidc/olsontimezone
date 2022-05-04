@@ -14,5 +14,8 @@
   "include": [
     "src",
     "spec"
+  ],
+  "exclude": [
+    "spec/types"
   ]
 }
