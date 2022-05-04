@@ -8,6 +8,7 @@
 		"build": "npm run clean && npm run build:node && npm run build:types",
 		"build:node": "tsc -p .",
 		"build:types": "dts-bundle-generator -o ./types/index.d.ts ./src/index.ts --project ./tsconfig.types.json  --no-check --disable-symlinks-following ",
+		"prepare:next": "node ./bin/prepareNext.js",
 		"clean": "rimraf ./build && rimraf ./types && rimraf ./dist",
 		"lint": "eslint .",
 		"lint:fix": "eslint --fix .",
