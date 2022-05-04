@@ -1,5 +1,6 @@
 const fs = require('fs');
 const assert = require('assert');
+const { exec, execSync } = require('child_process');
 
 const tag = 'next';
 const packageJsonFilePath = './package.json';
@@ -15,8 +16,13 @@ fs.writeFileSync(packageJsonFilePath, JSON.stringify(packageJsonValue, /*replace
 
 function getPrereleasePatch(tag, plainPatch) {
   const timeStr = Date.now();
+  const shortHash = getShortGitCommitHash();
 
-  return `${plainPatch}-${tag}.${timeStr}`;
+  return `${plainPatch}-${tag}.${timeStr}.${shortHash}`;
+}
+
+function getShortGitCommitHash() {
+  return execSync('git rev-parse --short HEAD').toString();
 }
 
 function parsePackageJsonVersion(versionString) {
