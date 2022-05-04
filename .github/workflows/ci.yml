@@ -1,6 +1,10 @@
 name: Test
 on:
   workflow_dispatch:
+    inputs:
+      pr-number:
+        description: an id of an pull request
+        required: true
   pull_request:
     paths:
       - '.github/workflows/ci.yml'
@@ -16,14 +20,12 @@ on:
       - 'src'
       - 'spec'
 
-permissions:
-  contents: read
-  pull-requests: write
-
 jobs:
   lint:
     name: Lint TS-Files
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v3.0.2
 
@@ -42,6 +44,8 @@ jobs:
     needs:
       - lint
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
       fail-fast: false
       matrix:
@@ -63,6 +67,8 @@ jobs:
     needs:
       - logic
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v3.0.2
 
@@ -84,6 +90,8 @@ jobs:
       contents: write
 
     steps:
-      - uses: fastify/github-action-merge-dependabot@v3.0.0
+      - uses: fastify/github-action-merge-dependabot@v3.0.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          pr-number: ${{ github.event.inputs.pr-number }}
+
