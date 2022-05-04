@@ -1,6 +1,10 @@
 name: Test
 on:
   workflow_dispatch:
+    inputs:
+      pr-number:
+        description: an id of an pull request
+        required: true
   pull_request:
     paths:
       - '.github/workflows/ci.yml'
@@ -86,6 +90,8 @@ jobs:
       contents: write
 
     steps:
-      - uses: fastify/github-action-merge-dependabot@v3.0.0
+      - uses: fastify/github-action-merge-dependabot@v3.0.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          pr-number: ${{ github.event.inputs.pr-number }}
+
