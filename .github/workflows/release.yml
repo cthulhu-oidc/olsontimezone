@@ -40,7 +40,7 @@ jobs:
           git add ./package.json
           git commit -m "Releasing version ${RELEASE_TAG/refs\/tags\/v/}"
           git push origin HEAD:${RELEASE_BRANCH}
-          git tag -f ${TEST/refs\/tags\//}
+          git tag -f ${RELEASE_TAG/refs\/tags\//}
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           RELEASE_TAG: ${{github.ref}}
