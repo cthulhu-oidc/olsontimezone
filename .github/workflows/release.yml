@@ -28,6 +28,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Setup and publish next
         run: |
+          git fetch
           git checkout ${RELEASE_BRANCH}
           npm whoami
           npm i
