@@ -23,8 +23,7 @@ jobs:
           npm run clean
           npm run build
           npm run prepare:next
-          NEW_VERSION=${${{github.event.ref}}/\/refs\/tags\/v/}}
-          npm version ${NEW_VERSION}
+          npm version ${RELEASE_TAG/\/refs\/tags\/v/}
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git add ./package.json
@@ -32,4 +31,5 @@ jobs:
           git push
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          RELEASE_TAG: ${{github.event.ref}}
           CI: true
