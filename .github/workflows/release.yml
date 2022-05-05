@@ -35,7 +35,7 @@ jobs:
           npm run test
           npm run clean
           npm run build
-          npm version ${RELEASE_TAG/\/refs\/tags\/v/}
+          npm version ${RELEASE_TAG/refs\/tags\/v/}
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           RELEASE_TAG: ${{github.ref}}
