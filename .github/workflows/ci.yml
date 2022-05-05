@@ -59,6 +59,24 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - run: npm install
+      - run: npm run test:ts
+
+  coverage:
+    name: Coverage on Node 18
+    needs:
+      - lint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v3.0.2
+
+      - name: Setup node 18
+        uses: actions/setup-node@56337c425554a6be30cdef71bf441f15be286854 # v3.1.1
+        with:
+          node-version: 18
+
+      - run: npm install
       - run: npm run test:coverage
 
   types:
@@ -93,4 +111,3 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           pr-number: ${{ github.event.inputs.pr-number }}
-
