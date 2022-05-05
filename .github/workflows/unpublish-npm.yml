@@ -1,0 +1,26 @@
+name: Unpublish on npm
+on:
+  release:
+    types:
+      - deleted
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org/
+      - name: Unpublish on npm
+        run: |
+          npm unpublish $(awk '/name/{gsub(/("|",)/,"",$2);print $2}' package.json)@${RELEASE_TAG/refs\/tags\//}
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          RELEASE_TAG: ${{github.ref}}
+          RELEASE_BRANCH: ${{github.event.release.target_commitish}}
+          CI: true
+          
