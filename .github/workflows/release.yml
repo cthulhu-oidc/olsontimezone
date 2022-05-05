@@ -1,0 +1,35 @@
+name: Release
+on:
+  release:
+    types:
+      - created
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org/
+      - name: Setup and publish next
+        run: |
+          npm whoami
+          npm i
+          npm run test
+          npm run clean
+          npm run build
+          npm run prepare:next
+          NEW_VERSION=${{ github.event.ref }/\/refs\/tags\/v/}
+          npm version ${NEW_VERSION}
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add ./package.json
+          git commit -m "Setting version to ${NEW_VERSION}"
+          git push
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          CI: true
