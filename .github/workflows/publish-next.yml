@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - uses: cthulhu-oidc/olsontimezone/.github/workflows/ci.yml
+      - uses: cthulhu-oidc/olsontimezone/.github/workflows/ci.yml@master
 
   publish:
     needs: ci
