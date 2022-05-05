@@ -10,8 +10,7 @@ jobs:
       - uses: .github/workflows/ci
 
   publish:
-    needs:
-      - ci
+    needs: ci
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
