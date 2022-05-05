@@ -607,3 +607,8 @@ export function isOlsonTimezone(value: unknown): value is OlsonTimezone {
     OlsonTimezones.indexOf(value as OlsonTimezone) !== -1
   );
 }
+
+export default {
+  OlsonTimezones,
+  isOlsonTimezone,
+}
