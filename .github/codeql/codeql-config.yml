@@ -2,7 +2,5 @@ name: "My CodeQL config"
 
 languages: 
   - 'typescript'
-queries:
-  - uses: security-extended
 paths:
   - src
