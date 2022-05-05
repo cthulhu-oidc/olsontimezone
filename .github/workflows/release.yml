@@ -23,7 +23,7 @@ jobs:
           npm run clean
           npm run build
           npm run prepare:next
-          NEW_VERSION=${{ github.event.ref }/\/refs\/tags\/v/}}
+          NEW_VERSION=${${{github.event.ref}}/\/refs\/tags\/v/}}
           npm version ${NEW_VERSION}
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
