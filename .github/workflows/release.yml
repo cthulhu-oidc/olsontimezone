@@ -1,4 +1,4 @@
-name: Release
+name: Publish on npm
 on:
   release:
     types:
@@ -6,27 +6,13 @@ on:
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+"
 jobs:
-  printJob:    
-    name: Print event
-    runs-on: ubuntu-latest
-    steps:
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: |
-        echo "$GITHUB_CONTEXT"
-  build:
+  publish:
     needs:
       - printJob
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node 18
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          registry-url: https://registry.npmjs.org/
-      - name: Setup and publish next
+      - name: Publish to npm
         run: |
           git fetch
           git checkout ${RELEASE_BRANCH}
@@ -41,6 +27,7 @@ jobs:
           git commit -m "Releasing version ${RELEASE_TAG/refs\/tags\/v/}"
           git push origin HEAD:${RELEASE_BRANCH}
           git tag -f ${RELEASE_TAG/refs\/tags\//}
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           RELEASE_TAG: ${{github.ref}}
