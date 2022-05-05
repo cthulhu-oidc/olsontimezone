@@ -5,11 +5,15 @@ on:
   push:
     branches: [master]
     paths:
+      - '.github/workflows/codeql.yml'
+      - '.github/codeql/codeql-config.yml'
       - 'package.json'
       - 'src'
   pull_request:
     branches: [master]
     paths:
+      - '.github/workflows/codeql.yml'
+      - '.github/codeql/codeql-config.yml'
       - 'package.json'
       - 'src'
   schedule:
@@ -40,8 +44,7 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
-        languages: 'typescript'
-        queries: security-and-quality
+        config-file: ./.github/codeql/codeql-config.yml
 
     - name: Autobuild
       uses: github/codeql-action/autobuild@v2
