@@ -2,8 +2,20 @@ name: "CodeQL"
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * 1'
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/codeql.yml'
+      - '.github/codeql/codeql-config.yml'
+      - 'package.json'
+      - 'src'
+  pull_request:
+    branches: [master]
+    paths:
+      - '.github/workflows/codeql.yml'
+      - '.github/codeql/codeql-config.yml'
+      - 'package.json'
+      - 'src'
 
 jobs:
   analyze:
@@ -26,7 +38,6 @@ jobs:
       uses: github/codeql-action/init@v2
       with:
         config-file: ./.github/codeql/codeql-config.yml
-        queries: security-and-quality
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
