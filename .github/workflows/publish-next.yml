@@ -7,9 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - uses: ./.github/workflows/ci
+      - uses: .github/workflows/ci
 
   publish:
+    needs:
+      - ci
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
