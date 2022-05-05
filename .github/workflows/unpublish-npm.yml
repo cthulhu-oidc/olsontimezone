@@ -3,6 +3,7 @@ on:
   release:
     types:
       - deleted
+      - unpublished
 jobs:
   printJob:    
     name: Print event
