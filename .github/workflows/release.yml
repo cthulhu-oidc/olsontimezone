@@ -30,18 +30,17 @@ jobs:
         run: |
           git fetch
           git checkout ${RELEASE_BRANCH}
-          npm whoami
+          npm --no-git-tag-version version ${RELEASE_TAG/refs\/tags\/v/}
           npm i
           npm run test
           npm run clean
           npm run build
-          npm --no-git-tag-version version ${RELEASE_TAG/refs\/tags\/v/}
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git add ./package.json
           git commit -m "Releasing version ${RELEASE_TAG/refs\/tags\/v/}"
           git push origin HEAD:${RELEASE_BRANCH}
-          git tag -f ${RELEASE_TAG}
+          git tag -f ${TEST/refs\/tags\//}
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           RELEASE_TAG: ${{github.ref}}
