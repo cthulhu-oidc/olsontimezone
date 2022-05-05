@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - uses: .github/workflows/ci
+      - uses: .github/workflows/ci.yml
 
   publish:
     needs: ci
