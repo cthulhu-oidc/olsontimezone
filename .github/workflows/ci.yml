@@ -5,7 +5,7 @@ on:
     inputs:
       pr-number:
         description: an id of an pull request
-        required: true
+        required: false
   pull_request:
     paths:
       - '.github/workflows/ci.yml'
