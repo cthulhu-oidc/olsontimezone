@@ -2,8 +2,6 @@ name: Unpublish on npm
 on:
   release:
     types:
-      - 
-      - deleted
       - unpublished
 jobs:
   printJob:    
