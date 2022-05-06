@@ -17,6 +17,7 @@ jobs:
       - name: Unpublish on npm
         run: |
           PACKAGE=$(awk '/name/{gsub(/("|",)/,"",$2);print $2}' package.json)@${RELEASE_TAG/refs\/tags\/v/}
+          echo $PACKAGE
           npm unpublish $PACKAGE
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
