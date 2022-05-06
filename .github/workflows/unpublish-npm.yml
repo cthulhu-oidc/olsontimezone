@@ -16,7 +16,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Unpublish on npm
         run: |
-          npm unpublish $(awk '/name/{gsub(/("|",)/,"",$2);print $2}' package.json)@${RELEASE_TAG/refs\/tags\/v/}
+          PACKAGE=$(awk '/name/{gsub(/("|",)/,"",$2);print $2}' package.json)@${RELEASE_TAG/refs\/tags\/v/}
+          npm unpublish $PACKAGE
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           RELEASE_TAG: ${{github.ref}}
