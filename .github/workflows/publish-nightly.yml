@@ -1,6 +1,8 @@
 name: Publish nightly build to npmjs
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   ci:
@@ -11,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Check if for ch in the last 24h
+      - name: Check for changes in the last 24h
         id: hasChanges
         run: if [ "$(expr $(git log -1 --format=%ct) + 86400)" -gt "$(date +%s)" ]; then echo true; else echo false; fi
       - name: Use node version 18
