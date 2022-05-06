@@ -14,11 +14,10 @@ jobs:
         with:
           node-version: 18
           registry-url: https://registry.npmjs.org/
-      - name: Unpublish on npm
+      - name: Deprecate on npm
         run: |
           PACKAGE=$(awk '/name/{gsub(/("|",)/,"",$2);print $2}' package.json)@${RELEASE_TAG/refs\/tags\/v/}
-          echo $PACKAGE
-          npm unpublish $PACKAGE
+          npm deprecate $PACKAGE "version ${RELEASE_TAG/refs\/tags\/v/} got deprecated"
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           RELEASE_TAG: ${{github.ref}}
