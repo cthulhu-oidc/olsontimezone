@@ -99,7 +99,7 @@ jobs:
       - run: npm run test:types
 
   automerge:
-    if: github.event_name != 'push'
+    if: github.event_name == 'pull_request'
     needs: 
       - types
     runs-on: ubuntu-latest
