@@ -1,4 +1,4 @@
-name: Publish next build to npmjs
+name: Publish nightly build to npmjs
 on:
   workflow_dispatch:
 
@@ -18,6 +18,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Setup and publish next
         run: |
+          let TMP=$(git log -1 --format=%ct)+86400
+          if [ "$TMP" -gt "$(date +%s)" ]; then exit; fi
           npm i
           npm run build
           npm run prepare:next
