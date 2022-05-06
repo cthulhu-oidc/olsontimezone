@@ -1,6 +1,9 @@
 name: Unpublish on npm
 on:
   release:
+    types:
+      - deleted
+
 jobs:
   printJob:    
     name: Print event
