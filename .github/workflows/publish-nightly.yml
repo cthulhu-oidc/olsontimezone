@@ -11,17 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Check if for changes in the last 24h
+      - name: Check if for ch in the last 24h
         id: hasChanges
-        run: if [ "$(expr $(git log -1 --format=%ct) + 60)" -gt "$(date +%s)" ]; then echo true; else echo false; fi
+        run: if [ "$(expr $(git log -1 --format=%ct) + 86400)" -gt "$(date +%s)" ]; then echo true; else echo false; fi
       - name: Use node version 18
-        if: steps.hasChanges.outcome != 'false'
+        if: steps.hasChanges.outcome == true
         uses: actions/setup-node@v3
         with:
           node-version: 18
           registry-url: https://registry.npmjs.org/
       - name: Setup and publish next
-        if: steps.hasChanges.outcome != 'false'
+        if: steps.hasChanges.outcome == true
         run: |
           npm i
           npm run build
