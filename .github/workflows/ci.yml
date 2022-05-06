@@ -2,10 +2,6 @@ name: CI
 on:
   workflow_call:
   workflow_dispatch:
-    inputs:
-      pr-number:
-        description: an id of an pull request
-        required: false
   pull_request:
     paths:
       - '.github/workflows/ci.yml'
@@ -99,7 +95,7 @@ jobs:
       - run: npm run test:types
 
   automerge:
-    if: ${{ github.event_name == 'pull_request' || github.event.inputs.pr-number != '' }}
+    if: ${{ github.event_name == 'pull_request'}}
     needs: 
       - types
     runs-on: ubuntu-latest
@@ -112,4 +108,3 @@ jobs:
       - uses: fastify/github-action-merge-dependabot@v3.0.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          pr-number: ${{ github.event.inputs.pr-number }}
