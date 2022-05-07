@@ -26,12 +26,12 @@ jobs:
   ci:
     needs:
       - changed
-    if: ${{ !failure() && !cancelled() && needs.changed.outputs.hasChanges == 'true' }}
+    if: ${{ !failure() && !cancelled() && needs.changed.outputs.hasChanges == true }}
     uses: ./.github/workflows/ci.yml
 
   publish:
     needs: ci
-    if: ${{ !failure() && !cancelled() && needs.changed.outputs.hasChanges == 'true' }}
+    if: ${{ !failure() && !cancelled() && needs.changed.outputs.hasChanges == true }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
