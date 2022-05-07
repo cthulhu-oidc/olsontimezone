@@ -1,9 +1,16 @@
 name: Publish nightly build to npmjs
 on:
+  workflow_call:
+    inputs:
+      timespan:
+        description: 'The timespan since the last commit'     
+        required: true
+        type: "string"
+        default: "86400"
   workflow_dispatch:
     inputs:
       timespan:
-        description: 'The timespan since the last changes were made'     
+        description: 'The timespan since the last commit'     
         required: true
         type: "string"
         default: "86400"
@@ -19,16 +26,10 @@ jobs:
         id: hasChanges
         run: if [ "$(expr $(git log -1 --format=%ct) + $TIMESPAN)" -gt "$(date +%s)" ]; then echo ::set-output name=hasChanges::true; else echo ::set-output name=hasChanges::false; fi
         env:
-          TIMESPAN: ${{ github.event.inputs.timespan || 86400 }}
+          TIMESPAN: ${{ inputs.timespan || github.event.inputs.timespan || 86400 }}
     outputs:
       hasChanges: ${{ steps.hasChanges.outputs.hasChanges }}
 
-  test:
-    needs: changed
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: echo ${{ needs.changed.outputs.hasChanges }}
   ci:
     needs:
       - changed
