@@ -24,6 +24,8 @@ jobs:
       hasChanges: ${{ steps.hasChanges.outcome }}
 
   ci:
+    needs:
+      - changed
     if: ${{ !failure() && !cancelled() && needs.changed.outputs.hasChanges == 'true' }}
     uses: ./.github/workflows/ci.yml
 
