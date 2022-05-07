@@ -1,23 +1,39 @@
 name: Publish nightly build to npmjs
 on:
   workflow_dispatch:
+    inputs:
+      timespan:
+        description: 'The timespan since the last changes were made'     
+        required: true
+        type: "string"
+        default: "86400"
   schedule:
     - cron: '0 0 * * *'
 
 jobs:
+  changed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check for changes
+        id: hasChanges
+        run: if [ "$(expr $(git log -1 --format=%ct) + $TIMESPAN)" -gt "$(date +%s)" ]; then echo true; else echo false; fi
+        env:
+          TIMESPAN: ${{ github.event.inputs.timespan || 86400 }}
+    outputs:
+      hasChanges: ${{ steps.hasChanges.outcome }}
+
   ci:
+    if: ${{ !failure() && !cancelled() && needs.changed.outputs.hasChanges == 'true' }}
     uses: ./.github/workflows/ci.yml
 
   publish:
     needs: ci
+    if: ${{ !failure() && !cancelled() && needs.changed.outputs.hasChanges == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Check for changes in the last 24h
-        id: hasChanges
-        run: if [ "$(expr $(git log -1 --format=%ct) + 86400)" -gt "$(date +%s)" ]; then echo true; else echo false; fi
       - name: Use node version 18
-        if: steps.hasChanges.outcome == true
         uses: actions/setup-node@v3
         with:
           node-version: 18
