@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Check for changes
         id: hasChanges
-        run: if [ "$(expr $(git log -1 --format=%ct) + $TIMESPAN)" -gt "$(date +%s)" ]; then echo true; else echo false; fi
+        run: if [ "$(expr $(git log -1 --format=%ct) + $TIMESPAN)" -gt "$(date +%s)" ]; then echo ::set-output name=hasChanges::true; else echo ::set-output name=hasChanges::false; fi
         env:
           TIMESPAN: ${{ github.event.inputs.timespan || 86400 }}
     outputs:
