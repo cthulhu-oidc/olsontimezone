@@ -30,7 +30,6 @@ jobs:
           git push origin HEAD:${RELEASE_BRANCH}
           git tag -f ${RELEASE_TAG/refs\/tags\//}
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           RELEASE_TAG: ${{github.ref}}
           RELEASE_BRANCH: ${{github.event.release.target_commitish}}
 
