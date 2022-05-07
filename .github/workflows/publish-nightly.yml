@@ -23,6 +23,12 @@ jobs:
     outputs:
       hasChanges: ${{ steps.hasChanges.outcome }}
 
+  test:
+    needs: changed
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo ${{ needs.changed.outputs.hasChanges }}
   ci:
     needs:
       - changed
