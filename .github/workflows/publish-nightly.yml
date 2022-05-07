@@ -47,10 +47,18 @@ jobs:
         with:
           node-version: 18
           registry-url: https://registry.npmjs.org/
+
+      - uses: actions/cache@v3
+        id: check-cache
+        with:
+          path: ~/.npm
+          key: node-18-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            node-18-
+        
       - name: Setup and publish next
-        if: steps.hasChanges.outcome == true
         run: |
-          npm i
+          npm install
           npm run build
           npm run prepare:next
           npm publish --access public --tag next
