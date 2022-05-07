@@ -2,6 +2,32 @@ name: CI
 on:
   workflow_call:
   workflow_dispatch:
+    inputs:
+      licenseCheck:
+        description: 'Check Licenses'     
+        required: false
+        type: boolean
+        default: true
+      lint:
+        description: 'Lint'     
+        required: false
+        type: boolean
+        default: true
+      logic:
+        description: 'Test Logic'     
+        required: false
+        type: boolean
+        default: true
+      types:
+        description: 'Test Types'     
+        required: false
+        type: boolean
+        default: true
+      coverage:
+        description: 'Code Coverage'     
+        required: false
+        type: boolean
+        default: true
   pull_request:
     paths:
       - '.github/workflows/ci.yml'
@@ -18,8 +44,30 @@ on:
       - 'spec'
 
 jobs:
+  licenseCheck:
+    name: Check Licenses
+    if: github.event.inputs.licenseCheck != false
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v3.0.2
+
+      - name: Setup node
+        uses: actions/setup-node@56337c425554a6be30cdef71bf441f15be286854 # v3.1.1
+        with:
+          node-version: 18
+
+      - run: npm install
+      - name: Install License-Checker globally
+        run: npm -g license-checker
+
+      - name: Check Licenses
+        run: npx license-checker --production --onlyAllow="MIT;ISC;BSD-3-Clause;BSD-2-Clause"
+
   lint:
     name: Lint TS-Files
+    if: github.event.inputs.lint != false
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -38,6 +86,7 @@ jobs:
 
   logic:
     name: Test Logic on Node ${{ matrix.node }}
+    if: github.event.inputs.lint != false
     needs:
       - lint
     runs-on: ubuntu-latest
@@ -60,6 +109,7 @@ jobs:
 
   types:
     name: Test Typescript Types
+    if: github.event.inputs.lint != false
     needs:
       - logic
     runs-on: ubuntu-latest
@@ -77,6 +127,7 @@ jobs:
       - run: npm run test:types
 
   coverage:
+    if: github.event.inputs.coverage != false
     name: Coverage on Node 18
     needs:
       - types
@@ -95,7 +146,7 @@ jobs:
       - run: npm run test:coverage
 
   automerge:
-    if: ${{ github.event_name == 'pull_request'}}
+    if: github.event_name == 'pull_request'
     needs: 
       - coverage
     runs-on: ubuntu-latest
