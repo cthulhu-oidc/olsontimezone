@@ -21,7 +21,7 @@ jobs:
         env:
           TIMESPAN: ${{ github.event.inputs.timespan || 86400 }}
     outputs:
-      hasChanges: ${{ steps.hasChanges.outcome }}
+      hasChanges: ${{ steps.hasChanges.outputs }}
 
   test:
     needs: changed
