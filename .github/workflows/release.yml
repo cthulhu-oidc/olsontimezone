@@ -37,9 +37,9 @@ jobs:
           git push origin HEAD:${RELEASE_BRANCH}
           git tag -f ${RELEASE_TAG_NAME}
         env:
-          RELEASE_NAME: ${{github.release.name}}
-          RELEASE_BODY: ${{github.release.body}}
-          RELEASE_TAG_NAME: ${{github.release.tag_name}}
+          RELEASE_NAME: ${{github.event.release.name}}
+          RELEASE_BODY: ${{github.event.release.body}}
+          RELEASE_TAG_NAME: ${{github.event.release.tag_name}}
           RELEASE_BRANCH: ${{github.event.release.target_commitish}}
 
       - uses: actions/cache@v3
