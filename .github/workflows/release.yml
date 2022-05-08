@@ -1,4 +1,4 @@
-name: Publish on npm
+name: Release
 on:
   release:
     types:
@@ -19,19 +19,27 @@ jobs:
           node-version: 18
           registry-url: https://registry.npmjs.org/
 
-      - name: Bump version
+      - name: Bump version and modify changelog
         run: |
           git fetch
           git checkout ${RELEASE_BRANCH}
-          npm --no-git-tag-version version ${RELEASE_TAG/refs\/tags\/v/}
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
+
+          npm --no-git-tag-version version ${RELEASE_TAG_NAME/v/}
           git add ./package.json
-          git commit -m "Bump version to ${RELEASE_TAG/refs\/tags\/v/}"
+
+          touch CHANGELOG.md
+          echo -e "${RELEASE_TAG_NAME/v/} / $(date +%Y-%m-%d)\n==================\n\n$RELEASE_BODY \n\n $(cat CHANGELOG.md)" > CHANGELOG.md
+          git add ./CHANGELOG.md
+
+          git commit -m "Release ${RELEASE_TAG_NAME/v/}"
           git push origin HEAD:${RELEASE_BRANCH}
-          git tag -f ${RELEASE_TAG/refs\/tags\//}
+          git tag -f ${RELEASE_TAG_NAME}
         env:
-          RELEASE_TAG: ${{github.ref}}
+          RELEASE_NAME: ${{github.release.name}}
+          RELEASE_BODY: ${{github.release.body}}
+          RELEASE_TAG_NAME: ${{github.release.tag_name}}
           RELEASE_BRANCH: ${{github.event.release.target_commitish}}
 
       - uses: actions/cache@v3
