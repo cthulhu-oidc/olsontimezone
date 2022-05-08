@@ -1,4 +1,11 @@
-0.0.43 / 2022-05-08
+0.0.44 / 2022-05-08
+==================
+
+* Bump actions/stale from 3 to 5 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/1
+* Bump mocha from 9.2.2 to 10.0.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/2
+* add next publishing pipeline by @Uzlopak in https://github.com/cthulhu-oidc/olsontimezone/pull/3 
+
+ 0.0.43 / 2022-05-08
 ==================
 
 ## What's Changed
