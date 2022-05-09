@@ -78,7 +78,7 @@ jobs:
         github.event_name == 'workflow_call' && inputs.licenseCheck != false ||
         github.event_name == 'workflow_dispatch' && github.event.inputs.licenseCheck != false ||
         github.event_name == 'pull_request' ||
-        github.event_name == 'push' ||
+        github.event_name == 'push'
       )
     name: Check Licenses
     runs-on: ubuntu-latest
@@ -115,7 +115,7 @@ jobs:
         github.event_name == 'workflow_call' && inputs.lint != false ||
         github.event_name == 'workflow_dispatch' && github.event.inputs.lint != false ||
         github.event_name == 'pull_request' ||
-        github.event_name == 'push' ||
+        github.event_name == 'push'
       )
     needs:
       - licenseCheck
@@ -153,7 +153,7 @@ jobs:
         github.event_name == 'workflow_call' && inputs.logic != false ||
         github.event_name == 'workflow_dispatch' && github.event.inputs.logic != false ||
         github.event_name == 'pull_request' ||
-        github.event_name == 'push' ||
+        github.event_name == 'push'
       )
     needs:
       - lint
@@ -191,7 +191,7 @@ jobs:
         github.event_name == 'workflow_call' && inputs.types != false ||
         github.event_name == 'workflow_dispatch' && github.event.inputs.types != false ||
         github.event_name == 'pull_request' ||
-        github.event_name == 'push' ||
+        github.event_name == 'push'
       )
     name: Test Typescript Types
     needs:
@@ -226,7 +226,7 @@ jobs:
         github.event_name == 'workflow_call' && inputs.coverage != false ||
         github.event_name == 'workflow_dispatch' && github.event.inputs.coverage != false ||
         github.event_name == 'pull_request' ||
-        github.event_name == 'push' ||
+        github.event_name == 'push'
       )
     name: Coverage on Node 18
     needs:
