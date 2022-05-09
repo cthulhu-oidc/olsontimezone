@@ -53,32 +53,32 @@ jobs:
         (github.event_name == 'workflow_dispatch' &&  github.events.inputs.licenseCheck == true) ||
         (github.event_name != 'workflow_call')
         )
-        }} == 'true'
+        }}
       lint:  > 
         ${{
         (
         (github.event_name == 'workflow_dispatch' &&  github.events.inputs.lint == true) ||
         (github.event_name != 'workflow_call')
         )
-        }} == 'true'
+        }}
       logic:  > 
         ${{
         (
         (github.event_name == 'workflow_dispatch' &&  github.events.inputs.logic == true) ||
         (github.event_name != 'workflow_call')
         )
-        }} == 'true'
+        }}
       types:  > 
         ${{
         (
         (github.event_name == 'workflow_dispatch' &&  github.events.inputs.types == true) ||
         (github.event_name != 'workflow_call')
         )
-        }} == 'true'
+        }}
       coverage:  > 
         ${{
         (
         (github.event_name == 'workflow_dispatch' &&  github.events.inputs.coverage == true) ||
         (github.event_name != 'workflow_call')
         )
-        }} == 'true'
+        }}
