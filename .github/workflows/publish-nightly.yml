@@ -21,7 +21,7 @@ jobs:
   changed:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@3.0.2
       - name: Check for changes
         id: hasChanges
         run: if [ "$(expr $(git log -1 --format=%ct) + $TIMESPAN)" -gt "$(date +%s)" ]; then echo ::set-output name=hasChanges::true; else echo ::set-output name=hasChanges::false; fi
@@ -41,14 +41,14 @@ jobs:
     if: ${{ !failure() && !cancelled() && needs.changed.outputs.hasChanges == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@3.0.2
       - name: Use node version 18
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v3.1.1
         with:
           node-version: 18
           registry-url: https://registry.npmjs.org/
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v3.0.2
         id: check-cache
         with:
           path: ~/.npm

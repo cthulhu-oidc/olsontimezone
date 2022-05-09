@@ -12,9 +12,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@3.0.2
       - name: Use Node 18
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v3.1.1
         with:
           node-version: 18
           registry-url: https://registry.npmjs.org/
@@ -42,7 +42,7 @@ jobs:
           RELEASE_TAG_NAME: ${{github.event.release.tag_name}}
           RELEASE_BRANCH: ${{github.event.release.target_commitish}}
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v3.0.2
         id: check-cache
         with:
           path: ~/.npm

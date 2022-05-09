@@ -10,14 +10,14 @@ jobs:
     needs: ci
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@3.0.2
       - name: Use node version 16
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v3.1.1
         with:
           node-version: 18
           registry-url: https://registry.npmjs.org/
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v3.0.2
         id: check-cache
         with:
           path: ~/.npm

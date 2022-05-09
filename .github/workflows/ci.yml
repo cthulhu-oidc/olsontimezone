@@ -85,14 +85,14 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v3.0.2
+      - uses: actions/checkout@v3.0.2
 
       - name: Setup node
-        uses: actions/setup-node@56337c425554a6be30cdef71bf441f15be286854 # v3.1.1
+        uses: actions/setup-node@v3.1.1
         with:
           node-version: 18
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v3.0.2
         id: check-cache
         with:
           path: ~/.npm
@@ -124,14 +124,14 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v3.0.2
+      - uses: actions/checkout@v3.0.2
 
       - name: Setup node
-        uses: actions/setup-node@56337c425554a6be30cdef71bf441f15be286854 # v3.1.1
+        uses: actions/setup-node@v3.1.1
         with:
           node-version: 18
       
-      - uses: actions/cache@v3
+      - uses: actions/cache@v3.0.2
         id: check-cache
         with:
           path: ~/.npm
@@ -165,14 +165,14 @@ jobs:
       matrix:
         node: [14, 16, 18]
     steps:
-      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v3.0.2
+      - uses: actions/checkout@v3.0.2
 
       - name: Setup node
-        uses: actions/setup-node@56337c425554a6be30cdef71bf441f15be286854 # v3.1.1
+        uses: actions/setup-node@v3.1.1
         with:
           node-version: ${{ matrix.node }}
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v3.0.2
         id: check-cache
         with:
           path: ~/.npm
@@ -200,14 +200,14 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v3.0.2
+      - uses: actions/checkout@v3.0.2
 
       - name: Setup node
-        uses: actions/setup-node@56337c425554a6be30cdef71bf441f15be286854 # v3.1.1
+        uses: actions/setup-node@v3.1.1
         with:
           node-version: 18
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v3.0.2
         id: check-cache
         with:
           path: ~/.npm
@@ -235,14 +235,14 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v3.0.2
+      - uses: actions/checkout@v3.0.2
 
       - name: Setup node 18
-        uses: actions/setup-node@56337c425554a6be30cdef71bf441f15be286854 # v3.1.1
+        uses: actions/setup-node@v3.1.1
         with:
           node-version: 18
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v3.0.2
         id: check-cache
         with:
           path: ~/.npm
