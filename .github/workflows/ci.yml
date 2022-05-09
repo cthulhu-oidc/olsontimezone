@@ -44,12 +44,6 @@ on:
         type: boolean
         default: true
 jobs:
-  debug:
-    runs-on: ubuntu-latest
-    steps:
-      - name : machine echo github
-        env : { CONTENT : "${{ toJson(github) }}" }
-        run : "echo $CONTENT"
   ci:
     uses: cthulhu-oidc/workflows/.github/workflows/ci.yml@master
     with:
