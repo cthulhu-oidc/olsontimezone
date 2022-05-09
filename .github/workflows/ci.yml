@@ -17,13 +17,38 @@ on:
       - 'spec'
 
   workflow_dispatch:
-
+    inputs:
+      licenseCheck:
+        description: 'Check Licenses'     
+        required: false
+        type: boolean
+        default: true
+      lint:
+        description: 'Lint'     
+        required: false
+        type: boolean
+        default: true
+      logic:
+        description: 'Test Logic'     
+        required: false
+        type: boolean
+        default: true
+      types:
+        description: 'Test Types'     
+        required: false
+        type: boolean
+        default: true
+      coverage:
+        description: 'Code Coverage'     
+        required: false
+        type: boolean
+        default: true
 jobs:
   ci:
     uses: cthulhu-oidc/workflows/.github/workflows/ci.yml@master
     with:
-      licenseCheck: true
+      licenseCheck: ${{ (github.event_name == 'workflow_dispatch' &&  github.events.inputs.licenseCheck == true) || github.event_name != 'workflow_call' }}
       lint: true
       logic: true
       types: true
-      coverage: true
+      coverage: true        
