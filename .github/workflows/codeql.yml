@@ -2,20 +2,6 @@ name: "CodeQL"
 
 on:
   workflow_dispatch:
-  push:
-    branches: [master]
-    paths:
-      - '.github/workflows/codeql-quality.yml'
-      - '.github/codeql/codeql-config.yml'
-      - 'package.json'
-      - 'src'
-  pull_request:
-    branches: [master]
-    paths:
-      - '.github/workflows/codeql-quality.yml'
-      - '.github/codeql/codeql-config.yml'
-      - 'package.json'
-      - 'src'
 
 jobs:
   analyze:
