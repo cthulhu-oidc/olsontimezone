@@ -1,5 +1,21 @@
 name: CI
 on:
+  pull_request:
+    paths:
+      - '.github/workflows/ci.yml'
+      - 'package.json'
+      - 'src'
+      - 'spec'
+
+  push:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/ci.yml'
+      - 'package.json'
+      - 'src'
+      - 'spec'
+
   workflow_dispatch:
     inputs:
       licenseCheck:
@@ -27,27 +43,22 @@ on:
         required: false
         type: boolean
         default: true
-  pull_request:
-    paths:
-      - '.github/workflows/ci.yml'
-      - 'package.json'
-      - 'src'
-      - 'spec'
-  push:
-    branches:
-      - master
-    paths:
-      - '.github/workflows/ci.yml'
-      - 'package.json'
-      - 'src'
-      - 'spec'
-
 jobs:
   ci:
-    uses: cthulhu-oidc/workflows/.github/workflows/ci.yml@vmaster
+    uses: cthulhu-oidc/workflows/.github/workflows/ci.yml@master
     with:
-      licenseCheck: true
-      lint: true
-      logic: true
-      types: true
-      coverage: true
+      licenseCheck: >
+        (github.event_name == 'workflow_dispatch' &&  github.events.inputs.licenseCheck == true) ||
+        (github.event_name != 'workflow_call')
+      lint:  >
+        (github.event_name == 'workflow_dispatch' &&  github.events.inputs.lint == true) ||
+        (github.event_name != 'workflow_call')
+      logic:  >
+        (github.event_name == 'workflow_dispatch' &&  github.events.inputs.logic == true) ||
+        (github.event_name != 'workflow_call')
+      types:  >
+        (github.event_name == 'workflow_dispatch' &&  github.events.inputs.types == true) ||
+        (github.event_name != 'workflow_call')
+      coverage:  >
+        (github.event_name == 'workflow_dispatch' &&  github.events.inputs.coverage == true) ||
+        (github.event_name != 'workflow_call')
