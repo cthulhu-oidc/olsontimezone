@@ -72,7 +72,7 @@ on:
 jobs:
   licenseCheck:
     name: Check Licenses
-    if: ${{ !failure() && !cancelled() && (inputs.licenseCheck != false || github.event.inputs.licenseCheck != false) }}
+    if: ${{ !failure() && !cancelled() && (inputs.licenseCheck == 'true' || github.event.inputs.licenseCheck == 'true') }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -103,7 +103,7 @@ jobs:
     needs:
       - licenseCheck
     name: Lint TS-Files
-    if: ${{ !failure() && !cancelled() && (inputs.lint != false || github.event.inputs.lint != false) }}
+    if: ${{ !failure() && !cancelled() && (inputs.lint == 'true' || github.event.inputs.lint == 'true') }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -130,7 +130,7 @@ jobs:
 
   logic:
     name: Test Logic on Node ${{ matrix.node }}
-    if: ${{ !failure() && !cancelled() && (inputs.logic != false || github.event.inputs.logic != false) }}
+    if: ${{ !failure() && !cancelled() && (inputs.logic == 'true' || github.event.inputs.logic == 'true') }}
     needs:
       - lint
     runs-on: ubuntu-latest
@@ -161,7 +161,7 @@ jobs:
 
   types:
     name: Test Typescript Types
-    if: ${{ !failure() && !cancelled() && (inputs.types != false || github.event.inputs.types != false) }}
+    if: ${{ !failure() && !cancelled() && (inputs.types == 'true' || github.event.inputs.types == 'true') }}
     needs:
       - logic
     runs-on: ubuntu-latest
@@ -187,7 +187,7 @@ jobs:
       - run: npm run test:types
 
   coverage:
-    if: ${{ !failure() && !cancelled() && (inputs.coverage != false || github.event.inputs.coverage != false) }}
+    if: ${{ !failure() && !cancelled() && (inputs.coverage == 'true' || github.event.inputs.coverage == 'true') }}
     name: Coverage on Node 18
     needs:
       - types
