@@ -6,7 +6,7 @@ jobs:
   ci:
     uses: cthulhu-oidc/workflows/.github/workflows/ci.yml@master
     with:
-      licenseCheck: false
+      licenseCheck: true
       lint: true
       logic: true
       types: true
