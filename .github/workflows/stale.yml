@@ -17,7 +17,7 @@ on:
 
 jobs:
   stale:
-    uses: cthulhu-oidc/workflows/.github/workflows/ci.yml@master
+    uses: cthulhu-oidc/workflows/.github/workflows/stale.yml@master
     with:
       closeStale: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.closeStale == 'true') || github.event_name != 'workflow_dispatch' }}
       lockStale: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.lockStale == 'true') || github.event_name != 'workflow_dispatch' }}
