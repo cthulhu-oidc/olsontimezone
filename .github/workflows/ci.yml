@@ -72,7 +72,13 @@ on:
 jobs:
   licenseCheck:
     name: Check Licenses
-    if: ${{ !failure() && !cancelled() && (inputs.licenseCheck != 'false' || github.event.inputs.licenseCheck != 'false') }}
+    if: >
+      !failure() &&
+      !cancelled() &&
+      (
+        inputs.licenseCheck != 'false' ||
+        github.event.inputs.licenseCheck != 'false'
+      )
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -103,7 +109,13 @@ jobs:
     needs:
       - licenseCheck
     name: Lint TS-Files
-    if: ${{ !failure() && !cancelled() && (inputs.lint != 'false' || github.event.inputs.lint != 'false') }}
+    if: >
+      !failure() &&
+      !cancelled() &&
+      (
+        inputs.lint != 'false' ||
+        github.event.inputs.lint != 'false'
+      )
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -130,7 +142,13 @@ jobs:
 
   logic:
     name: Test Logic on Node ${{ matrix.node }}
-    if: ${{ !failure() && !cancelled() && (inputs.logic != 'false' || github.event.inputs.logic != 'false') }}
+    if: >
+      !failure() &&
+      !cancelled() &&
+      (
+        inputs.logic != 'false' ||
+        github.event.inputs.logic != 'false'
+      )
     needs:
       - lint
     runs-on: ubuntu-latest
@@ -160,8 +178,14 @@ jobs:
       - run: npm run test:ts
 
   types:
+    if: >
+      !failure() &&
+      !cancelled() &&
+      (
+        inputs.types != 'false' ||
+        github.event.inputs.types != 'false'
+      )
     name: Test Typescript Types
-    if: ${{ !failure() && !cancelled() && (inputs.types != 'false' || github.event.inputs.types != 'false') }}
     needs:
       - logic
     runs-on: ubuntu-latest
@@ -187,7 +211,13 @@ jobs:
       - run: npm run test:types
 
   coverage:
-    if: ${{ !failure() && !cancelled() && (inputs.coverage != 'false' || github.event.inputs.coverage != 'false') }}
+    if: >
+      !failure() &&
+      !cancelled() &&
+      (
+        inputs.coverage != 'false' ||
+        github.event.inputs.coverage != 'false'
+      )
     name: Coverage on Node 18
     needs:
       - types
@@ -214,7 +244,9 @@ jobs:
       - run: npm run test:coverage
 
   automerge:
-    if: github.event_name == 'pull_request' && github.event.pull_request.user.login == 'dependabot[bot]'
+    if: >
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.user.login == 'dependabot[bot]'
     needs: 
       - coverage
     runs-on: ubuntu-latest
