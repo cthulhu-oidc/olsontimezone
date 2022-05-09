@@ -4,11 +4,9 @@ on:
 
 jobs:
   ci:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: cthulhu-oidc/olsontimezone/.github/workflows/ci.yml@master
-        with:
-          coverage: false
+    uses: ./.github/workflows/ci.yml
+    with:
+      coverage: false
 
   publish:
     needs: ci

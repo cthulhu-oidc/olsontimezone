@@ -85,6 +85,9 @@ jobs:
     permissions:
       contents: read
     steps:
+      - name : machine echo github
+        env : { CONTENT : "${{ toJson(github) }}" }
+        run : "echo $CONTENT"
       - uses: actions/checkout@v3.0.2
 
       - name: Setup node
