@@ -44,7 +44,7 @@ on:
 
 jobs:
   ci:
-    uses: cthulhu-oidc/.github/workflows/ci.yml@vmaster
+    uses: cthulhu-oidc/workflows/.github/workflows/ci.yml@vmaster
     with:
       licenseCheck: true
       lint: true
