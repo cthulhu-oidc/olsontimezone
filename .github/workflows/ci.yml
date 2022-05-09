@@ -223,7 +223,7 @@ jobs:
       !failure() &&
       !cancelled() &&
       (
-        github.event_name == 'workflow_call' && inputs.coverage != false ||
+        github.event_name == 'workflow_call' &&  github.event.inputs.coverage != 'false' ||
         github.event_name == 'workflow_dispatch' && github.event.inputs.coverage != 'false' ||
         github.event_name == 'pull_request' ||
         github.event_name == 'push'
