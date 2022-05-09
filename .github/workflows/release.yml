@@ -19,28 +19,46 @@ jobs:
           node-version: 18
           registry-url: https://registry.npmjs.org/
 
-      - name: Bump version and update changelog
+      - name: Checkout branch
         run: |
           git fetch
           git checkout ${RELEASE_BRANCH}
+        env:
+          RELEASE_BRANCH: github.event.release.target_commitish
+
+      - name: Configure git
+        run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
 
+      - name: Set version in package.json
+        run: |
           npm --no-git-tag-version version ${RELEASE_TAG_NAME/v/}
           git add ./package.json
+        env:
+          RELEASE_TAG_NAME: github.event.release.tag_name
 
+      - name: Update CHANGELOG.md
+        run: |
           touch CHANGELOG.md
           echo -e "${RELEASE_TAG_NAME/v/} / $(date +%Y-%m-%d)\n==================\n\n$RELEASE_BODY \n\n $(cat CHANGELOG.md)" > CHANGELOG.md
           git add ./CHANGELOG.md
+        env:
+          RELEASE_BODY: github.event.release.body
+          RELEASE_TAG_NAME: github.event.release.tag_name
 
+      - name: Commit and Push Changes
+        run: |
           git commit -m "Release ${RELEASE_TAG_NAME/v/}"
           git push origin HEAD:${RELEASE_BRANCH}
+        env:
+          RELEASE_TAG_NAME: github.event.release.tag_name
+          RELEASE_BRANCH: github.event.release.target_commitish
+
+      - name: Update tag
           git tag -f ${RELEASE_TAG_NAME}
         env:
-          RELEASE_NAME: ${{github.event.release.name}}
-          RELEASE_BODY: ${{github.event.release.body}}
-          RELEASE_TAG_NAME: ${{github.event.release.tag_name}}
-          RELEASE_BRANCH: ${{github.event.release.target_commitish}}
+          RELEASE_TAG_NAME: github.event.release.tag_name
 
       - uses: actions/cache@v3.0.2
         id: check-cache
