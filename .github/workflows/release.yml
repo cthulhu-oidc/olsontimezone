@@ -56,7 +56,7 @@ jobs:
           RELEASE_BRANCH: github.event.release.target_commitish
 
       - name: Update tag
-          git tag -f ${RELEASE_TAG_NAME}
+        run: git tag -f ${RELEASE_TAG_NAME}
         env:
           RELEASE_TAG_NAME: github.event.release.tag_name
 
