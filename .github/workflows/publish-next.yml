@@ -4,9 +4,13 @@ on:
 
 jobs:
   ci:
-    uses: cthulhu-oidc/olsontimezone/.github/workflows/ci.yml@master
+    uses: cthulhu-oidc/workflows/.github/workflows/ci.yml@master
     with:
-      coverage: false
+      licenseCheck: false
+      lint: true
+      logic: true
+      types: true
+      coverage: true
 
   publish:
     needs: ci
