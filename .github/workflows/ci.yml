@@ -75,8 +75,8 @@ jobs:
       !failure() &&
       !cancelled() &&
       (
-        github.event_name == 'workflow_call' && inputs.licenseCheck != false ||
-        github.event_name == 'workflow_dispatch' && github.event.inputs.licenseCheck != false ||
+        github.event_name == 'workflow_call' && inputs.licenseCheck != 'false' ||
+        github.event_name == 'workflow_dispatch' && github.event.inputs.licenseCheck != 'false' ||
         github.event_name == 'pull_request' ||
         github.event_name == 'push'
       )
@@ -112,8 +112,8 @@ jobs:
       !failure() &&
       !cancelled() &&
       (
-        github.event_name == 'workflow_call' && inputs.lint != false ||
-        github.event_name == 'workflow_dispatch' && github.event.inputs.lint != false ||
+        github.event_name == 'workflow_call' && inputs.lint != 'false' ||
+        github.event_name == 'workflow_dispatch' && github.event.inputs.lint != 'false' ||
         github.event_name == 'pull_request' ||
         github.event_name == 'push'
       )
@@ -150,8 +150,8 @@ jobs:
       !failure() &&
       !cancelled() &&
       (
-        github.event_name == 'workflow_call' && inputs.logic != false ||
-        github.event_name == 'workflow_dispatch' && github.event.inputs.logic != false ||
+        github.event_name == 'workflow_call' && inputs.logic != 'false' ||
+        github.event_name == 'workflow_dispatch' && github.event.inputs.logic != 'false' ||
         github.event_name == 'pull_request' ||
         github.event_name == 'push'
       )
@@ -188,8 +188,8 @@ jobs:
       !failure() &&
       !cancelled() &&
       (
-        github.event_name == 'workflow_call' && inputs.types != false ||
-        github.event_name == 'workflow_dispatch' && github.event.inputs.types != false ||
+        github.event_name == 'workflow_call' && inputs.types != 'false' ||
+        github.event_name == 'workflow_dispatch' && github.event.inputs.types != 'false' ||
         github.event_name == 'pull_request' ||
         github.event_name == 'push'
       )
@@ -223,8 +223,8 @@ jobs:
       !failure() &&
       !cancelled() &&
       (
-        github.event_name == 'workflow_call' && inputs.coverage != false ||
-        github.event_name == 'workflow_dispatch' && github.event.inputs.coverage != false ||
+        github.event_name == 'workflow_call' && inputs.coverage != 'false' ||
+        github.event_name == 'workflow_dispatch' && github.event.inputs.coverage != 'false' ||
         github.event_name == 'pull_request' ||
         github.event_name == 'push'
       )
