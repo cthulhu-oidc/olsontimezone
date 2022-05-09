@@ -47,7 +47,7 @@ jobs:
   ci:
     uses: cthulhu-oidc/workflows/.github/workflows/ci.yml@master
     with:
-      licenseCheck: ${{ (github.event_name == 'workflow_dispatch' &&  github.events.inputs.licenseCheck == true) || github.event_name != 'workflow_call' }}
+      licenseCheck: ${{ (github.event_name == 'workflow_dispatch' && github.events.inputs.licenseCheck == true) || github.event_name != 'workflow_dispatch' }}
       lint: true
       logic: true
       types: true
