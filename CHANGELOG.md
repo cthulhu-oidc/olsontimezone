@@ -1,4 +1,9 @@
-0.0.44 / 2022-05-08
+0.0.45 / 2022-05-09
+==================
+
+* super fast now 
+
+ 0.0.44 / 2022-05-08
 ==================
 
 * Bump actions/stale from 3 to 5 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/1
