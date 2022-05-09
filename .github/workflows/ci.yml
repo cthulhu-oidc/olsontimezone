@@ -85,9 +85,6 @@ jobs:
     permissions:
       contents: read
     steps:
-      - name : machine echo github
-        env : { CONTENT : "${{ toJson(github) }}" }
-        run : "echo $CONTENT"
       - uses: actions/checkout@v3.0.2
 
       - name: Setup node
@@ -226,7 +223,7 @@ jobs:
       !failure() &&
       !cancelled() &&
       (
-        github.event_name == 'workflow_call' &&  github.event.inputs.coverage != 'false' ||
+        github.event_name == 'workflow_call' &&  inputs.coverage != 'false' ||
         github.event_name == 'workflow_dispatch' && github.event.inputs.coverage != 'false' ||
         github.event_name == 'pull_request' ||
         github.event_name == 'push'
