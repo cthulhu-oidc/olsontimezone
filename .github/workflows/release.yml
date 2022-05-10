@@ -16,11 +16,6 @@ jobs:
         with:
           fetch-depth: 0
           ref: ${{github.event.release.target_commitish}}
-      - name: Use Node 18
-        uses: actions/setup-node@v3.1.1
-        with:
-          node-version: 18
-          registry-url: https://registry.npmjs.org/
 
       - name: Configure git
         run: |
@@ -29,7 +24,10 @@ jobs:
 
       - name: Set version in package.json
         run: |
-          npm --no-git-tag-version version ${RELEASE_TAG_NAME/v/}
+          VERSION=${RELEASE_TAG_NAME:1}
+          SEARCH='("version":[[:space:]]*").+(")'
+          REPLACE="\1${VERSION}\2"
+          sed -i -E "s/${SEARCH}/${REPLACE}/g" package.json
           git add ./package.json
         env:
           RELEASE_TAG_NAME: ${{github.event.release.tag_name}}
