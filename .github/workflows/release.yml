@@ -13,18 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.0.2
+        with:
+          fetch-depth: 0
+          ref: ${{github.event.release.target_commitish}}
       - name: Use Node 18
         uses: actions/setup-node@v3.1.1
         with:
           node-version: 18
           registry-url: https://registry.npmjs.org/
-
-      - name: Checkout branch
-        run: |
-          git fetch
-          git checkout ${RELEASE_BRANCH}
-        env:
-          RELEASE_BRANCH: ${{github.event.release.target_commitish}}
 
       - name: Configure git
         run: |
