@@ -54,14 +54,6 @@ jobs:
         env:
           RELEASE_TAG_NAME: ${{github.event.release.tag_name}}
 
-      - uses: actions/cache@v3.0.2
-        id: check-cache
-        with:
-          path: ~/.npm
-          key: node-18-${{ hashFiles('**/package.json') }}
-          restore-keys: |
-            node-18-
-
       - name: Publish on npm
         run: |
           npm i
