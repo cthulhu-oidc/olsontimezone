@@ -10,55 +10,10 @@ permissions:
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3.0.2
-        with:
-          fetch-depth: 0
-          ref: ${{github.event.release.target_commitish}}
-
-      - name: Configure git
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email 'github-actions[bot]@users.noreply.github.com'
-
-      - name: Set version in package.json
-        run: |
-          VERSION=${RELEASE_TAG_NAME:1}
-          SEARCH='("version":[[:space:]]*").+(")'
-          REPLACE="\1${VERSION}\2"
-          sed -i -E "s/${SEARCH}/${REPLACE}/g" package.json
-          git add ./package.json
-        env:
-          RELEASE_TAG_NAME: ${{github.event.release.tag_name}}
-
-      - name: Update CHANGELOG.md
-        run: |
-          touch CHANGELOG.md
-          echo -e "${RELEASE_TAG_NAME/v/} / $(date +%Y-%m-%d)\n==================\n\n$RELEASE_BODY \n\n $(cat CHANGELOG.md)" > CHANGELOG.md
-          git add ./CHANGELOG.md
-        env:
-          RELEASE_BODY: ${{github.event.release.body}}
-          RELEASE_TAG_NAME: ${{github.event.release.tag_name}}
-
-      - name: Commit and Push Changes
-        run: |
-          git commit -m "Release ${RELEASE_TAG_NAME/v/}"
-          git push origin HEAD:${RELEASE_BRANCH}
-        env:
-          RELEASE_TAG_NAME: ${{github.event.release.tag_name}}
-          RELEASE_BRANCH: ${{github.event.release.target_commitish}}
-
-      - name: Update tag
-        run: git tag -f ${RELEASE_TAG_NAME}
-        env:
-          RELEASE_TAG_NAME: ${{github.event.release.tag_name}}
-
-      - name: Publish on npm
-        run: |
-          npm i
-          npm run build
-          npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          
+    uses: cthulhu-oidc/workflows/.github/workflows/publish-npm.yml@master
+    with:
+      release-body: ${{ github.event.release.body }}
+      git-tag: ${{ github.event.release.tag_name }}
+      branch:  ${{ github.event.release.target_commitish }}
+    secrets:
+      NPM_TOKEN: secrets.NPM_TOKEN
