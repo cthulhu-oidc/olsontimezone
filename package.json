@@ -1,6 +1,6 @@
 {
 	"name": "@cthulhu-oidc/olsontimezone",
-	"version": "",
+	"version": "0.0.55",
 	"description": "TS Library for Olson-Timezone ",
 	"main": "./dist/index.js",
 	"types": "./types/index.d.ts",
