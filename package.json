@@ -12,8 +12,9 @@
 		"clean": "rimraf ./build && rimraf ./types && rimraf ./dist",
 		"lint": "eslint .",
 		"lint:fix": "eslint --fix .",
-		"test": "npm run test:ts && npm run test:types",
-		"test:ts": "tsc -p ./tsconfig.test.json && mocha --recursive './build/spec/*.spec.js' --preserve-symlinks && npm run clean",
+		"test": "npm run test:logic && npm run test:types",
+		"test:logic": "npm run test:logic:unit",
+		"test:logic:unit": "tsc -p ./tsconfig.test.json && mocha --recursive './build/spec/*.spec.js' --preserve-symlinks && npm run clean",
 		"test:types": "npm run build:types && tsd && npm run clean",
 		"test:coverage": "tsc -p ./tsconfig.test.json && nyc mocha --require ts-node/register --require source-map-support/register --recursive './spec/*.spec.ts'  && npm run clean"
 	},
