@@ -16,4 +16,4 @@ jobs:
       git-tag: ${{ github.event.release.tag_name }}
       branch:  ${{ github.event.release.target_commitish }}
     secrets:
-      NPM_TOKEN: secrets.NPM_TOKEN
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
