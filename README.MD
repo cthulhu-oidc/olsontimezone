@@ -6,8 +6,8 @@
 
 [![Known Vulnerabilities](https://snyk.io/test/github/cthulhu-oidc/olsontimezone/badge.svg)](https://snyk.io/test/github/cthulhu-oidc/olsontimezone)
 [![Security Responsible Disclosure](https://img.shields.io/badge/Security-Responsible%20Disclosure-yellow.svg)](https://github.com/nodejs/security-wg/blob/HEAD/processes/responsible_disclosure_template.md)
-[![NPM version](https://img.shields.io/npm/v/@cthulhu-oidc/olsontimezone.svg?style=flat)](https://www.npmjs.com/package/@cthulhu/olsontimezone)
-[![NPM downloads](https://img.shields.io/npm/dm/@cthulhu-oidc/olsontimezone.svg?style=flat)](https://www.npmjs.com/package/@cthulhu/olsontimezone)
+[![NPM version](https://img.shields.io/npm/v/@cthulhu-oidc/olsontimezone.svg?style=flat)](https://www.npmjs.com/package/@cthulhu-oidc/olsontimezone)
+[![NPM downloads](https://img.shields.io/npm/dm/@cthulhu-oidc/olsontimezone.svg?style=flat)](https://www.npmjs.com/package/@cthulhu-oidc/olsontimezone)
 
 </div>
 
