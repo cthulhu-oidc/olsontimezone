@@ -21,7 +21,7 @@ jobs:
   changed:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.0.2
+      - uses: actions/checkout@v3.1.0
       - name: Check for changes
         id: hasChanges
         run: if [ "$(expr $(git log -1 --format=%ct) + $TIMESPAN)" -gt "$(date +%s)" ]; then echo ::set-output name=hasChanges::true; else echo ::set-output name=hasChanges::false; fi
@@ -41,7 +41,7 @@ jobs:
     if: ${{ !failure() && !cancelled() && needs.changed.outputs.hasChanges == 'true' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.0.2
+      - uses: actions/checkout@v3.1.0
       - name: Use node version 18
         uses: actions/setup-node@v3.4.1
         with:
