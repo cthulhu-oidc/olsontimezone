@@ -10,9 +10,8 @@ permissions:
 
 jobs:
   publish:
-    uses: cthulhu-oidc/workflows/.github/workflows/publish-npm.yml@master
+    uses: cthulhu-oidc/workflows/.github/workflows/release.yml@master
     with:
-      release-body: ${{ github.event.release.body }}
       git-tag: ${{ github.event.release.tag_name }}
       branch:  ${{ github.event.release.target_commitish }}
     secrets: inherit
