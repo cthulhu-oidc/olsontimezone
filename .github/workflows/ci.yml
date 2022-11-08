@@ -38,11 +38,6 @@ on:
         required: false
         type: boolean
         default: true
-      coverage:
-        description: 'Code Coverage'     
-        required: false
-        type: boolean
-        default: true
 jobs:
   ci:
     uses: cthulhu-oidc/workflows/.github/workflows/ci.yml@master
@@ -51,4 +46,3 @@ jobs:
       lint: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.lint == 'true') || github.event_name != 'workflow_dispatch' }}
       logic: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.logic == 'true') || github.event_name != 'workflow_dispatch' }}
       types: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.types == 'true') || github.event_name != 'workflow_dispatch' }}
-      coverage: ${{ (github.event_name == 'workflow_dispatch' && github.event.inputs.coverage == 'true') || github.event_name != 'workflow_dispatch' }}

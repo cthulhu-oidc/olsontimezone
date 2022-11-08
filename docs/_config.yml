@@ -1,0 +1,20 @@
+markdown: kramdown
+remote_theme: cthulhu-oidc/jekyll-theme
+highlighter: rouge
+
+collections:
+  docs:
+    output: true
+    permalink: /documentation/:name
+
+organization:
+  url: https://github.com/cthulhu-oidc"
+  twitter: https://twitter.com/cthulhu_oidc_js
+
+package:
+  name: '@cthulhu/skeleton'
+  description: Skeleton for @cthulhu-oidc
+  url: https://skeleton.cthulhu-oidc.dev
+  repository:
+    url: https://github.com/cthulhu-oidc/skeleton
+  license: MIT

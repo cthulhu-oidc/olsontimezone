@@ -2,52 +2,22 @@
 	"name": "@cthulhu-oidc/olsontimezone",
 	"version": "0.0.60",
 	"description": "TS Library for Olson-Timezone ",
-	"main": "./dist/index.js",
-	"types": "./types/index.d.ts",
+	"main": "lib/index.js",
+	"types": "types/index.d.ts",
 	"scripts": {
-		"build": "npm run clean && npm run build:node && npm run build:types",
-		"build:node": "tsc -p .",
-		"build:types": "dts-bundle-generator -o ./types/index.d.ts ./src/index.ts --project ./tsconfig.types.json  --no-check --disable-symlinks-following ",
-		"prepare:next": "node ./scripts/prepareNext.js",
-		"clean": "rimraf ./build && rimraf ./types && rimraf ./dist",
-		"lint": "eslint .",
-		"lint:fix": "eslint --fix .",
+		"lint": "standard",
 		"test": "npm run test:logic && npm run test:types",
-		"test:logic": "npm run test:logic:unit",
-		"test:logic:unit": "tsc -p ./tsconfig.test.json && mocha --recursive './build/spec/*.spec.js' --preserve-symlinks && npm run clean",
-		"test:types": "npm run build:types && tsd && npm run clean",
-		"test:coverage": "tsc -p ./tsconfig.test.json && nyc mocha --require ts-node/register --require source-map-support/register --recursive './spec/*.spec.ts'  && npm run clean"
+		"test:logic": "tap",
+		"test:types": "tsd"
 	},
 	"devDependencies": {
-		"@istanbuljs/nyc-config-typescript": "1.0.2",
-		"@types/chai": "4.3.3",
-		"@types/mocha": "9.1.1",
-		"@types/node": "18.7.16",
-		"@typescript-eslint/eslint-plugin": "5.36.2",
-		"@typescript-eslint/parser": "5.37.0",
-		"chai": "4.3.6",
-		"dts-bundle-generator": "6.13.0",
-		"eslint": "8.23.1",
-		"eslint-plugin-import": "2.26.0",
-		"eslint-plugin-promise": "6.1.0",
-		"eslint-plugin-security": "1.5.0",
-		"eslint-plugin-security-node": "1.1.1",
-		"eslint-plugin-sonarjs": "0.15.0",
-		"mocha": "10.0.0",
-		"nyc": "15.1.0",
-		"rimraf": "3.0.2",
-		"source-map-support": "^0.5.21",
-		"ts-node": "^10.7.0",
-		"tsd": "0.23.0",
-		"typescript": "4.8.3"
+		"@fastify/pre-commit": "^2.0.2",
+		"@types/node": "^18.11.9",
+		"rimraf": "^3.0.2",
+		"standard": "^17.0.0",
+		"tap": "^16.3.0",
+		"tsd": "^0.24.1"
 	},
-	"files": [
-		"package.json",
-		"LICENSE",
-		"README.MD",
-		"dist",
-		"types"
-	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/cthulhu-oidc/olsontimezone.git"
@@ -60,15 +30,9 @@
 	"engines": {
 		"node": ">=14"
 	},
-	"tsd": {
-		"directory": "spec/types",
-		"compilerOptions": {
-			"strict": true,
-			"forceConsistentCasingInFileNames": true,
-			"strictNullChecks": true,
-			"module": "commonjs",
-			"target": "ES2017"
-		}
-	},
+	"pre-commit": [
+		"lint",
+		"test"
+	],
 	"homepage": "https://github.com/cthulhu-oidc/olsontimezone#readme"
 }
