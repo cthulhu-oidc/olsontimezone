@@ -1,0 +1,103 @@
+0.1.0 / 2022-11-08
+==================
+
+## What's Changed
+* Bump @types/node from 17.0.31 to 17.0.33 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/8
+* Bump @typescript-eslint/parser from 5.22.0 to 5.23.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/9
+* Bump @typescript-eslint/eslint-plugin from 5.22.0 to 5.23.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/10
+* Bump actions/setup-node from 3.1.1 to 3.2.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/7
+* Bump github/codeql-action from 2.1.9 to 2.1.10 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/6
+* Bump eslint from 8.15.0 to 8.16.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/13
+* Bump @types/node from 17.0.33 to 17.0.35 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/12
+* Bump @typescript-eslint/parser from 5.23.0 to 5.25.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/14
+* Bump @typescript-eslint/eslint-plugin from 5.23.0 to 5.25.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/15
+* Bump github/codeql-action from 2.1.10 to 2.1.11 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/11
+* Bump @typescript-eslint/parser from 5.25.0 to 5.26.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/16
+* Bump @types/node from 17.0.35 to 17.0.36 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/18
+* Bump typescript from 4.6.4 to 4.7.2 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/19
+* Bump @typescript-eslint/eslint-plugin from 5.25.0 to 5.26.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/17
+* Bump eslint from 8.16.0 to 8.17.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/22
+* Bump @typescript-eslint/eslint-plugin from 5.26.0 to 5.27.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/23
+* Bump typescript from 4.7.2 to 4.7.3 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/25
+* Bump @typescript-eslint/parser from 5.26.0 to 5.27.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/26
+* Bump dts-bundle-generator from 6.9.0 to 6.10.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/27
+* Bump @types/node from 17.0.36 to 17.0.40 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/24
+* Bump github/codeql-action from 2.1.11 to 2.1.12 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/21
+* Bump actions/cache from 3.0.2 to 3.0.3 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/20
+* Bump dts-bundle-generator from 6.10.0 to 6.11.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/31
+* Bump @types/node from 17.0.40 to 17.0.42 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/30
+* Bump @typescript-eslint/parser from 5.27.0 to 5.27.1 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/33
+* Bump tsd from 0.20.0 to 0.21.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/32
+* Bump @typescript-eslint/eslint-plugin from 5.27.0 to 5.27.1 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/34
+* Bump actions/cache from 3.0.3 to 3.0.4 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/28
+* Bump typescript from 4.7.3 to 4.7.4 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/35
+* Bump eslint from 8.17.0 to 8.18.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/36
+* Bump @typescript-eslint/parser from 5.27.1 to 5.28.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/38
+* Bump @types/node from 17.0.42 to 18.0.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/40
+* Bump @typescript-eslint/eslint-plugin from 5.27.1 to 5.28.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/39
+* Bump dts-bundle-generator from 6.11.0 to 6.12.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/37
+* Bump @typescript-eslint/eslint-plugin from 5.28.0 to 5.29.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/42
+* Bump @typescript-eslint/parser from 5.28.0 to 5.29.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/43
+* Bump eslint from 8.18.0 to 8.19.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/46
+* Bump @typescript-eslint/parser from 5.29.0 to 5.30.4 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/47
+* Bump @types/node from 18.0.0 to 18.0.1 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/48
+* Bump tsd from 0.21.0 to 0.22.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/45
+* Bump @typescript-eslint/eslint-plugin from 5.29.0 to 5.30.4 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/49
+* Bump github/codeql-action from 2.1.12 to 2.1.15 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/44
+* Bump @types/node from 18.0.1 to 18.0.3 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/51
+* Bump @typescript-eslint/parser from 5.30.4 to 5.30.5 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/50
+* Bump @typescript-eslint/eslint-plugin from 5.30.4 to 5.30.5 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/52
+* Bump @typescript-eslint/eslint-plugin from 5.30.5 to 5.30.6 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/57
+* Bump eslint from 8.19.0 to 8.20.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/58
+* Bump @types/node from 18.0.3 to 18.0.6 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/59
+* Bump @typescript-eslint/parser from 5.30.5 to 5.30.6 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/56
+* Bump actions/setup-node from 3.2.0 to 3.4.1 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/53
+* Bump @typescript-eslint/parser from 5.30.6 to 5.30.7 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/60
+* Bump @types/node from 18.0.6 to 18.6.1 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/61
+* Bump eslint-plugin-sonarjs from 0.13.0 to 0.14.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/62
+* Bump @typescript-eslint/eslint-plugin from 5.30.6 to 5.30.7 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/63
+* Bump @typescript-eslint/parser from 5.30.7 to 5.31.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/65
+* Bump @types/node from 18.6.1 to 18.6.3 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/67
+* Bump eslint from 8.20.0 to 8.21.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/68
+* Bump @typescript-eslint/eslint-plugin from 5.30.7 to 5.31.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/66
+* Bump @types/node from 18.6.3 to 18.6.4 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/71
+* Bump @typescript-eslint/parser from 5.31.0 to 5.32.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/73
+* Bump @types/chai from 4.3.1 to 4.3.3 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/72
+* Bump @typescript-eslint/eslint-plugin from 5.31.0 to 5.32.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/74
+* Bump eslint from 8.21.0 to 8.22.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/77
+* Bump @types/node from 18.6.4 to 18.7.4 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/78
+* Bump @typescript-eslint/parser from 5.32.0 to 5.33.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/79
+* Bump eslint-plugin-sonarjs from 0.14.0 to 0.15.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/80
+* Bump @typescript-eslint/eslint-plugin from 5.32.0 to 5.33.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/76
+* Bump actions/cache from 3.0.4 to 3.0.7 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/75
+* Bump github/codeql-action from 2.1.15 to 2.1.18 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/69
+* Bump @typescript-eslint/eslint-plugin from 5.33.0 to 5.33.1 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/83
+* Bump @types/node from 18.7.4 to 18.7.9 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/85
+* Bump @typescript-eslint/parser from 5.33.0 to 5.33.1 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/84
+* Bump actions/cache from 3.0.7 to 3.0.8 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/82
+* Bump github/codeql-action from 2.1.18 to 2.1.20 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/81
+* Bump @typescript-eslint/parser from 5.33.1 to 5.35.1 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/88
+* Bump typescript from 4.7.4 to 4.8.2 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/87
+* Bump eslint-plugin-promise from 6.0.0 to 6.0.1 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/90
+* Bump eslint from 8.22.0 to 8.23.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/92
+* Bump @types/node from 18.7.9 to 18.7.13 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/93
+* Bump @typescript-eslint/eslint-plugin from 5.33.1 to 5.35.1 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/89
+* Bump tsd from 0.22.0 to 0.23.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/91
+* Bump github/codeql-action from 2.1.20 to 2.1.21 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/86
+* Bump dts-bundle-generator from 6.12.0 to 6.13.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/95
+* Bump @typescript-eslint/parser from 5.35.1 to 5.36.1 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/96
+* Bump @types/node from 18.7.13 to 18.7.15 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/98
+* Bump @typescript-eslint/eslint-plugin from 5.35.1 to 5.36.1 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/97
+* Bump typescript from 4.8.2 to 4.8.3 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/99
+* Bump @types/node from 18.7.15 to 18.7.16 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/101
+* Bump eslint from 8.23.0 to 8.23.1 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/102
+* Bump @typescript-eslint/eslint-plugin from 5.36.1 to 5.36.2 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/103
+* Bump @typescript-eslint/parser from 5.36.1 to 5.36.2 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/100
+* Bump github/codeql-action from 2.1.21 to 2.1.22 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/94
+* Bump @typescript-eslint/parser from 5.36.2 to 5.37.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/108
+* Bump eslint-plugin-promise from 6.0.1 to 6.1.0 by @dependabot in https://github.com/cthulhu-oidc/olsontimezone/pull/132
+
+
+**Full Changelog**: https://github.com/cthulhu-oidc/olsontimezone/compare/V0.0.60...v0.1.0 
+
+ 
